@@ -1,8 +1,8 @@
 # ITMobile Shared package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/itmobile/itm-common.svg?style=flat-square)](https://packagist.org/packages/itmobile/itm-common)
-[![Tests](https://img.shields.io/github/actions/workflow/status/itmobile/itm-common/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/itmobile/itm-common/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/itmobile/itm-common.svg?style=flat-square)](https://packagist.org/packages/itmobile/itm-common)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/anvarious97/itm.common.svg?style=flat-square)](https://packagist.org/packages/anvarious97/itm.common)
+[![Tests](https://img.shields.io/github/actions/workflow/status/anvarious97/itm.common/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/anvarious97/itm.common/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/anvarious97/itm.common.svg?style=flat-square)](https://packagist.org/packages/anvarious97/itm.common)
 
 This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
 
@@ -19,7 +19,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via composer:
 
 ```bash
-composer require itmobile/itm-common
+composer require anvarious97/itm.common
 ```
 
 ## Usage

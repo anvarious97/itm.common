@@ -1,11 +1,11 @@
 {
-    "name": "itmobile/itm-common",
+    "name": "anvarious97/itm.common",
     "description": "ITMobile Shared package",
     "keywords": [
         "ITMobile",
-        "itm-common"
+        "itm.common"
     ],
-    "homepage": "https://github.com/itmobile/itm-common",
+    "homepage": "https://github.com/anvarious97/itm.common",
     "license": "MIT",
     "authors": [
         {

@@ -16,13 +16,13 @@ it('CompanyRelationCollectionDto from array', function () {
     $collection = CompanyRelationCollectionDto::fromArray($data);
 
     expect($collection->relations)->toHaveCount(2)
-                                  ->and($collection->relations[0])->toBeInstanceOf(CompanyRelationDto::class)
-                                  ->and($collection->relations[0]->relationType->value)->toBe('child')
-                                  ->and($collection->relations[1]->relationType->value)->toBe('supervisor');
+        ->and($collection->relations[0])->toBeInstanceOf(CompanyRelationDto::class)
+        ->and($collection->relations[0]->relationType->value)->toBe('child')
+        ->and($collection->relations[1]->relationType->value)->toBe('supervisor');
 });
 
 it('CompanyRelationCollectionDto throws exception on invalid array structure', function () {
     CompanyRelationCollectionDto::fromArray([
-        'relations' => [['foo' => 'bar']]
+        'relations' => [['foo' => 'bar']],
     ]);
 })->throws(\TypeError::class);

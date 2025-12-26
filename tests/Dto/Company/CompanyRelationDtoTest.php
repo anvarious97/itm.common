@@ -2,7 +2,6 @@
 
 namespace ITMobile\ITMobileCommon\Tests\Dto\Company;
 
-
 use ITMobile\ITMobileCommon\Dto\Company\CompanyRelationDto;
 use ITMobile\ITMobileCommon\Enums\Company\CompanyRelationType;
 
@@ -14,8 +13,8 @@ it('CompanyRelationDto creates company relation dto', function () {
     );
 
     expect($dto->companyId)->toBe(1)
-                           ->and($dto->relatedCompanyId)->toBe(2)
-                           ->and($dto->relationType)->toBe(CompanyRelationType::CHILD);
+        ->and($dto->relatedCompanyId)->toBe(2)
+        ->and($dto->relationType)->toBe(CompanyRelationType::CHILD);
 });
 
 it('CompanyRelationDto from array', function () {
@@ -28,7 +27,7 @@ it('CompanyRelationDto from array', function () {
     $dto = CompanyRelationDto::fromArray($data);
 
     expect($dto->companyId)->toBe(1)
-                           ->and($dto->relatedCompanyId)->toBe(2)
-                           ->and($dto->relationType)->toBeInstanceOf(CompanyRelationType::class)
-                           ->and($dto->relationType->value)->toBe('child');
+        ->and($dto->relatedCompanyId)->toBe(2)
+        ->and($dto->relationType)->toBeInstanceOf(CompanyRelationType::class)
+        ->and($dto->relationType->value)->toBe('child');
 });

@@ -2,7 +2,6 @@
 
 namespace ITMobile\ITMobileCommon\Tests\Dto\Company;
 
-
 use ITMobile\ITMobileCommon\Dto\Company\CompanyDto;
 use ITMobile\ITMobileCommon\Enums\Company\CompanyType;
 
@@ -18,11 +17,11 @@ it('CompanyDto represents company data', function () {
     );
 
     expect($dto->id)->toBeInt()
-                    ->and($dto->isDeleted)->toBeFalse()
-                    ->and($dto->name)->toBeString()
-                    ->and($dto->type)->toBeInstanceOf(CompanyType::class)
-                    ->and($dto->details)->toBeArray()
-                    ->and($dto->settings)->toBeArray();
+        ->and($dto->isDeleted)->toBeFalse()
+        ->and($dto->name)->toBeString()
+        ->and($dto->type)->toBeInstanceOf(CompanyType::class)
+        ->and($dto->details)->toBeArray()
+        ->and($dto->settings)->toBeArray();
 });
 
 it('CompanyDto from array', function () {
@@ -39,9 +38,9 @@ it('CompanyDto from array', function () {
     $dto = CompanyDto::fromArray($data);
 
     expect($dto->id)->toBe(1)
-                    ->and($dto->cityId)->toBe(2)
-                    ->and($dto->name)->toBe('Company')
-                    ->and($dto->type)->toBeInstanceOf(CompanyType::class)
-                    ->and($dto->type->value)->toBe('dispatch')
-                    ->and($dto->isDeleted)->toBeFalse();
+        ->and($dto->cityId)->toBe(2)
+        ->and($dto->name)->toBe('Company')
+        ->and($dto->type)->toBeInstanceOf(CompanyType::class)
+        ->and($dto->type->value)->toBe('dispatch')
+        ->and($dto->isDeleted)->toBeFalse();
 });

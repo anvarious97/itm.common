@@ -20,11 +20,13 @@ class CompanyUpdateDto extends BaseDto
     public int $id;
 
     public ?int $cityId;
+
     public ?string $name;
 
     #[CastWith(EnumCaster::class, CompanyType::class)]
     public ?CompanyType $type;
 
     public ?array $details;
+
     public ?array $settings;
 }

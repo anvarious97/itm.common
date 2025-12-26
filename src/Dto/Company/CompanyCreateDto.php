@@ -17,6 +17,7 @@ use Spatie\DataTransferObject\Casters\EnumCaster;
 class CompanyCreateDto extends BaseDto
 {
     public int $cityId;
+
     public string $name;
 
     #[CastWith(EnumCaster::class, CompanyType::class)]
@@ -24,6 +25,7 @@ class CompanyCreateDto extends BaseDto
 
     /** @var array<string, mixed>|null */
     public ?array $details;
+
     /** @var array<string, mixed>|null */
     public ?array $settings;
 }

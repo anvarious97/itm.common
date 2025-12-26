@@ -7,7 +7,6 @@ use ITMobile\ITMobileCommon\Enums\Company\CompanyType;
 use Spatie\DataTransferObject\Attributes\CastWith;
 use Spatie\DataTransferObject\Casters\EnumCaster;
 
-
 /**
  * @property int $id
  * @property int $cityId
@@ -22,12 +21,14 @@ class CompanyDto extends BaseDto
     public int $id;
 
     public int $cityId;
+
     public string $name;
 
     #[CastWith(EnumCaster::class, CompanyType::class)]
     public CompanyType $type;
 
     public array $details;
+
     public array $settings;
 
     public bool $isDeleted;

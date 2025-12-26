@@ -12,7 +12,7 @@ enum CompanyRelationType: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::CHILD => 'Дочерняя',
             self::PARTNER => 'Партнёрская',
             self::SERVICE_PROVIDER => 'Сервисная компания',
@@ -21,4 +21,3 @@ enum CompanyRelationType: string
         };
     }
 }
-

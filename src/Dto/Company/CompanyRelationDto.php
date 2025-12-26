@@ -15,6 +15,7 @@ use Spatie\DataTransferObject\Casters\EnumCaster;
 class CompanyRelationDto extends BaseDto
 {
     public int $companyId;
+
     public int $relatedCompanyId;
 
     #[CastWith(EnumCaster::class, CompanyRelationType::class)]

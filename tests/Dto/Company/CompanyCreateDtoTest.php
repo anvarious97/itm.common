@@ -13,10 +13,10 @@ it('CompanyCreateDto with all fields', function () {
     );
 
     expect($dto->cityId)->toBe(1)
-                        ->and($dto->name)->toBe('Test Company')
-                        ->and($dto->type)->toBe(CompanyType::DISPATCH)
-                        ->and($dto->details)->toBeArray()
-                        ->and($dto->settings)->toBeArray();
+        ->and($dto->name)->toBe('Test Company')
+        ->and($dto->type)->toBe(CompanyType::DISPATCH)
+        ->and($dto->details)->toBeArray()
+        ->and($dto->settings)->toBeArray();
 });
 
 it('CompanyCreateDto allows nullable fields', function () {
@@ -29,7 +29,7 @@ it('CompanyCreateDto allows nullable fields', function () {
     );
 
     expect($dto->details)->toBeNull()
-                         ->and($dto->settings)->toBeNull();
+        ->and($dto->settings)->toBeNull();
 });
 
 it('CompanyCreateDto from array', function () {
@@ -44,11 +44,11 @@ it('CompanyCreateDto from array', function () {
     $dto = CompanyCreateDto::fromArray($data);
 
     expect($dto->cityId)->toBe(1)
-                        ->and($dto->name)->toBe('Test Company')
-                        ->and($dto->type)->toBeInstanceOf(CompanyType::class)
-                        ->and($dto->type->value)->toBe('dispatch')
-                        ->and($dto->details)->toBe(['foo' => 'bar'])
-                        ->and($dto->settings)->toBe(['a' => 1]);
+        ->and($dto->name)->toBe('Test Company')
+        ->and($dto->type)->toBeInstanceOf(CompanyType::class)
+        ->and($dto->type->value)->toBe('dispatch')
+        ->and($dto->details)->toBe(['foo' => 'bar'])
+        ->and($dto->settings)->toBe(['a' => 1]);
 });
 
 it('CompanyCreateDto handles nullable fields from array', function () {
@@ -63,6 +63,6 @@ it('CompanyCreateDto handles nullable fields from array', function () {
     $dto = CompanyCreateDto::fromArray($data);
 
     expect($dto->details)->toBeNull()
-                         ->and($dto->settings)->toBeNull()
-                         ->and($dto->type->value)->toBe('dispatch');
+        ->and($dto->settings)->toBeNull()
+        ->and($dto->type->value)->toBe('dispatch');
 });

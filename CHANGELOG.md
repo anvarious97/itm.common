@@ -2,7 +2,8 @@
 
 All notable changes to `itm.common` will be documented in this file.
 
-## [0.0.2] - 2025-12-26
+## v0.0.2 - 2025-12-26
+
 ### Added
 - DTO для `Company`:
     - `CompanyDto`, `CompanyCreateDto`, `CompanyUpdateDto`

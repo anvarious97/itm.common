@@ -16,8 +16,8 @@
     ],
     "require": {
         "php": "^8.3",
-        "illuminate/collections": "^12.46",
-        "illuminate/pagination": "^12.46",
+        "illuminate/collections": "^10||^11||^12",
+        "illuminate/pagination": "^10||^11||^12",
         "spatie/data-transfer-object": "^3.9"
     },
     "require-dev": {

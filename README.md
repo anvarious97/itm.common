@@ -21,6 +21,21 @@ You can install the package via composer, after adding the repository:
 composer require anvarious97/itm.common
 ```
 
+## Usage
+
+### Pagination (ApPaginator)
+
+Упрощённый LengthAwarePaginator с чистым JSON (data, total, per_page, current_page, last_page).
+В Laravel доступен макрос ->apiPaginate(), вне Laravel — через new ApiPaginator(...).
+
+```php
+// Laravel
+$companies = Company::query()->apiPaginate(50);
+// Common
+use ITMobile\ITMobileCommon\Pagination\ApiPaginator;
+$paginator = new ApiPaginator($items, $total, $perPage, $currentPage);
+```
+
 ## Testing
 
 ```bash

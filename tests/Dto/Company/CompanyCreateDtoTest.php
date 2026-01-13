@@ -51,6 +51,25 @@ it('CompanyCreateDto from array', function () {
         ->and($dto->settings)->toBe(['a' => 1]);
 });
 
+it('CompanyCreateDto from snake_case array', function () {
+    $data = [
+        'city_id' => 1,
+        'name' => 'Test Company',
+        'type' => 'dispatch',
+        'details' => ['foo' => 'bar'],
+        'settings' => ['a' => 1],
+    ];
+
+    $dto = CompanyCreateDto::fromSnake($data);
+
+    expect($dto->cityId)->toBe(1)
+                        ->and($dto->name)->toBe('Test Company')
+                        ->and($dto->type)->toBeInstanceOf(CompanyType::class)
+                        ->and($dto->type->value)->toBe('dispatch')
+                        ->and($dto->details)->toBe(['foo' => 'bar'])
+                        ->and($dto->settings)->toBe(['a' => 1]);
+});
+
 it('CompanyCreateDto handles nullable fields from array', function () {
     $data = [
         'cityId' => 1,

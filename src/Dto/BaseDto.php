@@ -2,11 +2,14 @@
 
 namespace ITMobile\ITMobileCommon\Dto;
 
+use ITMobile\ITMobileCommon\Helpers\CamelCaseDataTransferObject;
 use Spatie\DataTransferObject\DataTransferObject;
 use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 abstract class BaseDto extends DataTransferObject
 {
+    use CamelCaseDataTransferObject;
+
     /**
      * @throws UnknownProperties
      */

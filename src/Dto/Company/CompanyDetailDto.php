@@ -10,6 +10,7 @@ use Spatie\DataTransferObject\Casters\EnumCaster;
 
 /**
  * Полный DTO
+ *
  * @property int $id
  * @property int $cityId
  * @property string $name
@@ -25,16 +26,21 @@ class CompanyDetailDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public int $id;
+
     public int $cityId;
+
     public string $name;
 
     #[CastWith(EnumCaster::class, CompanyType::class)]
     public CompanyType $type;
 
     public array $details = [];
+
     public array $settings = [];
 
     public ?string $createdAt = null;
+
     public ?string $updatedAt = null;
+
     public ?string $deletedAt = null;
 }

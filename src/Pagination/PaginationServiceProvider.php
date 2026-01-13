@@ -11,11 +11,7 @@ class PaginationServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $class = EloquentBuilder::class;
-        if (
-            class_exists($class)
-            && method_exists($class, 'macro')
-            && method_exists($class, 'paginate')
-        ) {
+        if (class_exists($class) && method_exists($class, 'paginate')) {
             $class::macro(
                 'apiPaginate',
                 function ($perPage = null, $columns = ['*'], $pageName = 'page', $page = null) {

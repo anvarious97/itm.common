@@ -4,6 +4,7 @@ namespace ITMobile\ITMobileCommon\Dto\Company;
 
 use ITMobile\ITMobileCommon\Dto\BaseDto;
 use ITMobile\ITMobileCommon\Enums\Company\CompanyRelationType;
+use ITMobile\ITMobileCommon\Helpers\CamelCaseDataTransferObject;
 use Spatie\DataTransferObject\Attributes\CastWith;
 use Spatie\DataTransferObject\Casters\EnumCaster;
 
@@ -14,6 +15,8 @@ use Spatie\DataTransferObject\Casters\EnumCaster;
  */
 class CompanyRelationDto extends BaseDto
 {
+    use CamelCaseDataTransferObject;
+
     public int $companyId;
 
     public int $relatedCompanyId;

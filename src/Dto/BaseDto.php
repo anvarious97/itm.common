@@ -2,7 +2,6 @@
 
 namespace ITMobile\ITMobileCommon\Dto;
 
-use ITMobile\ITMobileCommon\Helpers\CamelCaseDataTransferObject;
 use JsonSerializable;
 use Spatie\DataTransferObject\DataTransferObject;
 use Spatie\DataTransferObject\Exceptions\UnknownProperties;
@@ -11,8 +10,6 @@ use Throwable;
 
 abstract class BaseDto extends DataTransferObject implements JsonSerializable, Stringable
 {
-    use CamelCaseDataTransferObject;
-
     /**
      * @throws UnknownProperties
      */

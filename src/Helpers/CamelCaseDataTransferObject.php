@@ -15,4 +15,16 @@ trait CamelCaseDataTransferObject
 
         return new static($camelData);
     }
+
+    public function toSnake(): array
+    {
+        $snakeData = [];
+
+        foreach ($this as $key => $value) {
+            $snakeKey = strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $key));
+            $snakeData[$snakeKey] = $value;
+        }
+
+        return $snakeData;
+    }
 }

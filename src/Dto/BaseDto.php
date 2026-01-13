@@ -9,7 +9,7 @@ use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 use Stringable;
 use Throwable;
 
-abstract class BaseDto extends DataTransferObject implements Stringable, JsonSerializable
+abstract class BaseDto extends DataTransferObject implements JsonSerializable, Stringable
 {
     use CamelCaseDataTransferObject;
 

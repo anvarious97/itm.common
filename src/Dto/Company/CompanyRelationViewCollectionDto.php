@@ -7,11 +7,11 @@ use Spatie\DataTransferObject\Attributes\CastWith;
 use Spatie\DataTransferObject\Casters\ArrayCaster;
 
 /**
- * @property CompanyRelationDto[] $relations
+ * @property CompanyRelationViewDto[] $relations
  */
-class CompanyRelationCollectionDto extends BaseDto
+class CompanyRelationViewCollectionDto extends BaseDto
 {
-    /** @var CompanyRelationDto[] */
-    #[CastWith(ArrayCaster::class, itemType: CompanyRelationDto::class)]
+    /** @var CompanyRelationViewDto[] */
+    #[CastWith(ArrayCaster::class, itemType: CompanyRelationViewDto::class)]
     public array $relations;
 }

@@ -18,7 +18,9 @@ class CompanyListDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public int $id;
+
     public int $cityId;
+
     public string $name;
 
     public ?string $createdAt = null;

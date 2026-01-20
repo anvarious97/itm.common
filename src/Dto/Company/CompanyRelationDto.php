@@ -9,17 +9,17 @@ use Spatie\DataTransferObject\Attributes\CastWith;
 use Spatie\DataTransferObject\Casters\EnumCaster;
 
 /**
- * @property int $companyId
- * @property int $relatedCompanyId
+ * @property string $companyId UUID
+ * @property string $relatedCompanyId UUID
  * @property CompanyRelationType $relationTyp
  */
 class CompanyRelationDto extends BaseDto
 {
     use CamelCaseDataTransferObject;
 
-    public int $companyId;
+    public string $companyId;
 
-    public int $relatedCompanyId;
+    public string $relatedCompanyId;
 
     #[CastWith(EnumCaster::class, CompanyRelationType::class)]
     public CompanyRelationType $relationType;

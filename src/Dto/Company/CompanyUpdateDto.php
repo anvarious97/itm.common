@@ -9,8 +9,8 @@ use Spatie\DataTransferObject\Attributes\CastWith;
 use Spatie\DataTransferObject\Casters\EnumCaster;
 
 /**
- * @property int $id
- * @property int|null $cityId
+ * @property string $id UUID
+ * @property string|null $cityId UUID
  * @property string|null $name
  * @property CompanyType|null $type
  * @property array|null $details
@@ -20,9 +20,9 @@ class CompanyUpdateDto extends BaseDto
 {
     use CamelCaseDataTransferObject;
 
-    public int $id;
+    public string $id;
 
-    public ?int $cityId;
+    public ?string $cityId;
 
     public ?string $name;
 

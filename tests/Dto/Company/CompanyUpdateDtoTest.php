@@ -6,7 +6,7 @@ use ITMobile\ITMobileCommon\Dto\Company\CompanyUpdateDto;
 
 it('CompanyUpdateDto with partial fields', function () {
     $dto = new CompanyUpdateDto(
-        id: 10,
+        id: 'test-id',
         cityId: null,
         name: 'Updated name',
         type: null,
@@ -14,7 +14,7 @@ it('CompanyUpdateDto with partial fields', function () {
         settings: ['x' => 'y'],
     );
 
-    expect($dto->id)->toBe(10)
+    expect($dto->id)->toBe('test-id')
         ->and($dto->name)->toBe('Updated name')
         ->and($dto->settings)->toBeArray()
         ->and($dto->type)->toBeNull();
@@ -22,8 +22,8 @@ it('CompanyUpdateDto with partial fields', function () {
 
 it('CompanyUpdateDto from array', function () {
     $data = [
-        'id' => 10,
-        'cityId' => 5,
+        'id' => 'test-id',
+        'cityId' => 'city-test-id',
         'name' => 'Updated Company',
         'type' => 'dispatch',
         'details' => ['x' => 'y'],
@@ -32,8 +32,8 @@ it('CompanyUpdateDto from array', function () {
 
     $dto = CompanyUpdateDto::fromArray($data);
 
-    expect($dto->id)->toBe(10)
-        ->and($dto->cityId)->toBe(5)
+    expect($dto->id)->toBe('test-id')
+        ->and($dto->cityId)->toBe('city-test-id')
         ->and($dto->name)->toBe('Updated Company')
         ->and($dto->type->value)->toBe('dispatch')
         ->and($dto->details)->toBe(['x' => 'y'])
@@ -42,7 +42,7 @@ it('CompanyUpdateDto from array', function () {
 
 it('CompanyUpdateDto handles nullable fields from array', function () {
     $data = [
-        'id' => 20,
+        'id' => 'test-id',
         'cityId' => null,
         'name' => null,
         'type' => null,

@@ -6,8 +6,8 @@ use ITMobile\ITMobileCommon\Dto\BaseDto;
 use ITMobile\ITMobileCommon\Helpers\CamelCaseDataTransferObject;
 
 /**
- * @property int $id
- * @property int $cityId
+ * @property string $id UUID
+ * @property string $cityId UUID
  * @property string $name
  * @property string|null $createdAt
  * @property string|null $updatedAt
@@ -17,8 +17,8 @@ class CompanyListDto extends BaseDto
 {
     use CamelCaseDataTransferObject;
 
-    public int $id;
-    public int $cityId;
+    public string $id;
+    public string $cityId;
     public string $name;
 
     public ?string $createdAt = null;

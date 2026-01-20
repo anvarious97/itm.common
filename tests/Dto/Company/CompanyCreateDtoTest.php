@@ -5,14 +5,14 @@ use ITMobile\ITMobileCommon\Enums\Company\CompanyType;
 
 it('CompanyCreateDto with all fields', function () {
     $dto = new CompanyCreateDto(
-        cityId: 1,
+        cityId: 'city-test-id',
         name: 'Test Company',
         type: CompanyType::DISPATCH,
         details: ['foo' => 'bar'],
         settings: ['a' => 1],
     );
 
-    expect($dto->cityId)->toBe(1)
+    expect($dto->cityId)->toBe('city-test-id')
         ->and($dto->name)->toBe('Test Company')
         ->and($dto->type)->toBe(CompanyType::DISPATCH)
         ->and($dto->details)->toBeArray()
@@ -21,7 +21,7 @@ it('CompanyCreateDto with all fields', function () {
 
 it('CompanyCreateDto allows nullable fields', function () {
     $dto = new CompanyCreateDto(
-        cityId: 1,
+        cityId: 'city-test-id',
         name: 'Test Company',
         type: CompanyType::DISPATCH,
         details: null,
@@ -34,7 +34,7 @@ it('CompanyCreateDto allows nullable fields', function () {
 
 it('CompanyCreateDto from array', function () {
     $data = [
-        'cityId' => 1,
+        'cityId' => 'city-test-id',
         'name' => 'Test Company',
         'type' => 'dispatch',
         'details' => ['foo' => 'bar'],
@@ -43,7 +43,7 @@ it('CompanyCreateDto from array', function () {
 
     $dto = CompanyCreateDto::fromArray($data);
 
-    expect($dto->cityId)->toBe(1)
+    expect($dto->cityId)->toBe('city-test-id')
         ->and($dto->name)->toBe('Test Company')
         ->and($dto->type)->toBeInstanceOf(CompanyType::class)
         ->and($dto->type->value)->toBe('dispatch')
@@ -53,7 +53,7 @@ it('CompanyCreateDto from array', function () {
 
 it('CompanyCreateDto from snake_case array', function () {
     $data = [
-        'city_id' => 1,
+        'city_id' => 'city-test-id',
         'name' => 'Test Company',
         'type' => 'dispatch',
         'details' => ['foo' => 'bar'],
@@ -62,7 +62,7 @@ it('CompanyCreateDto from snake_case array', function () {
 
     $dto = CompanyCreateDto::fromSnake($data);
 
-    expect($dto->cityId)->toBe(1)
+    expect($dto->cityId)->toBe('city-test-id')
         ->and($dto->name)->toBe('Test Company')
         ->and($dto->type)->toBeInstanceOf(CompanyType::class)
         ->and($dto->type->value)->toBe('dispatch')
@@ -72,7 +72,7 @@ it('CompanyCreateDto from snake_case array', function () {
 
 it('CompanyCreateDto handles nullable fields from array', function () {
     $data = [
-        'cityId' => 1,
+        'cityId' => 'city-test-id',
         'name' => 'Test Company',
         'type' => 'dispatch',
         'details' => null,

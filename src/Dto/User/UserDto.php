@@ -37,6 +37,7 @@ class UserDto extends BaseDto
     public UserStatus $status;
 
     public ?string $role;
+
     public array $permissions = [];
 
     public array $details = [];

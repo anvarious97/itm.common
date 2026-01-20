@@ -17,9 +17,11 @@ class AuthenticatedUserDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public string $userId;
+
     public ?string $companyId;
 
     public ?string $role;
+
     public array $permissions = [];
 
     public ?string $impersonatorId = null;

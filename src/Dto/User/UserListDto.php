@@ -29,7 +29,9 @@ class UserListDto extends BaseDto
     public ?string $companyId;
 
     public string $name;
+
     public ?string $email;
+
     public ?string $phone;
 
     #[CastWith(EnumCaster::class, UserStatus::class)]
@@ -38,6 +40,8 @@ class UserListDto extends BaseDto
     public ?string $role;
 
     public ?string $createdAt = null;
+
     public ?string $updatedAt = null;
+
     public ?string $deletedAt = null;
 }

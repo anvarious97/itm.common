@@ -15,6 +15,8 @@ class PermissionDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public string $id;
+
     public string $name;
+
     public ?string $guardName = null;
 }

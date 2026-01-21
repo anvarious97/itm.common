@@ -24,9 +24,13 @@ class UserUpdateDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public string $id;
+
     public ?string $name;
+
     public ?string $email;
+
     public ?string $phone;
+
     public ?string $password;
 
     public ?string $companyId;
@@ -35,5 +39,6 @@ class UserUpdateDto extends BaseDto
     public ?UserStatus $status = UserStatus::ACTIVE;
 
     public ?array $details = [];
+
     public ?array $settings = [];
 }

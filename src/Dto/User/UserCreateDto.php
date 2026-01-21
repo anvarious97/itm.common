@@ -23,8 +23,11 @@ class UserCreateDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public string $name;
+
     public ?string $email;
+
     public ?string $phone;
+
     public string $password;
 
     public ?string $companyId;

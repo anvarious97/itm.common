@@ -14,5 +14,6 @@ class RoleDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public string $name;
+
     public array $permissions = [];
 }

@@ -15,6 +15,8 @@ class RoleCreateDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public string $name;
+
     public ?string $companyId = null;
+
     public array $permissions = [];
 }

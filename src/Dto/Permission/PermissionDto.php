@@ -10,6 +10,7 @@ use ITMobile\ITMobileCommon\Dto\BaseDto;
  */
 class PermissionDto extends BaseDto
 {
-	public string $id;
-	public string $name;
+    public string $id;
+
+    public string $name;
 }

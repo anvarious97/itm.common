@@ -14,7 +14,7 @@ use Spatie\DataTransferObject\Casters\EnumCaster;
  * @property string $name
  * @property string|null $email
  * @property string|null $phone
- * @property string|null $role
+ * @property array $roles
  * @property array $permissions
  * @property array $details
  * @property array $settings
@@ -36,7 +36,7 @@ class UserDto extends BaseDto
     #[CastWith(EnumCaster::class, UserStatus::class)]
     public UserStatus $status;
 
-    public ?string $role;
+    public array $roles;
 
     public array $permissions = [];
 

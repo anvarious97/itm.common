@@ -15,7 +15,7 @@ use Spatie\DataTransferObject\Casters\EnumCaster;
  * @property string|null $email
  * @property string|null $phone
  * @property UserStatus $status
- * @property string|null $role
+ * @property array $roles
  * @property string|null $createdAt
  * @property string|null $updatedAt
  * @property string|null $deletedAt
@@ -37,7 +37,7 @@ class UserListDto extends BaseDto
     #[CastWith(EnumCaster::class, UserStatus::class)]
     public UserStatus $status;
 
-    public ?string $role;
+    public array $roles = [];
 
     public ?string $createdAt = null;
 

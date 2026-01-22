@@ -8,7 +8,7 @@ use ITMobile\ITMobileCommon\Helpers\CamelCaseDataTransferObject;
 /**
  * @property string $userId UUID
  * @property string|null $companyId UUID
- * @property string|null $role
+ * @property array $roles
  * @property array $permissions
  * @property string|null $impersonatorId UUID
  */
@@ -20,9 +20,11 @@ class AuthenticatedUserDto extends BaseDto
 
     public ?string $companyId;
 
-    public ?string $role;
+    public array $roles;
 
     public array $permissions = [];
+
+    public bool $isSuperAdmin = false;
 
     public ?string $impersonatorId = null;
 }

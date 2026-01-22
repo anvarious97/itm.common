@@ -11,5 +11,6 @@ use ITMobile\ITMobileCommon\Dto\BaseDto;
 class LoginRequestDto extends BaseDto
 {
     public string $login;
+
     public string $password;
 }

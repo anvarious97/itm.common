@@ -15,6 +15,8 @@ class AuthTokenDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public string $accessToken;
+
     public string $tokenType = 'Bearer';
+
     public int $expiresIn = 3600;
 }

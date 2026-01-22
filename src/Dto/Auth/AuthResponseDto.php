@@ -12,5 +12,6 @@ use ITMobile\ITMobileCommon\Dto\User\AuthenticatedUserDto;
 class AuthResponseDto extends BaseDto
 {
     public AuthTokenDto $token;
+
     public AuthenticatedUserDto $user;
 }

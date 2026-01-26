@@ -30,13 +30,13 @@ trait CamelCaseDataTransferObject
 
     public function onlyProvidedSnake(): array
     {
-        if (!property_exists($this, 'providedFields')) {
+        if (! property_exists($this, 'providedFields')) {
             return $this->toSnake();
         }
 
         $data = [];
         foreach ($this->providedFields as $property) {
-            if (!property_exists($this, $property)) {
+            if (! property_exists($this, $property)) {
                 continue;
             }
 

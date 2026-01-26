@@ -3,8 +3,8 @@
 namespace ITMobile\ITMobileCommon\Dto\User;
 
 use ITMobile\ITMobileCommon\Dto\BaseDto;
+use ITMobile\ITMobileCommon\Dto\Traits\CamelCaseDataTransferObject;
 use ITMobile\ITMobileCommon\Enums\User\UserStatus;
-use ITMobile\ITMobileCommon\Helpers\CamelCaseDataTransferObject;
 use Spatie\DataTransferObject\Attributes\CastWith;
 use Spatie\DataTransferObject\Casters\EnumCaster;
 

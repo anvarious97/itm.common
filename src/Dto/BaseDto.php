@@ -13,6 +13,18 @@ abstract class BaseDto extends DataTransferObject implements JsonSerializable, S
     /**
      * @throws UnknownProperties
      */
+    public function __construct(array $parameters = [], ...$args)
+    {
+        if (method_exists($this, 'initProvidedFields')) {
+            $this->initProvidedFields($parameters);
+        }
+
+        parent::__construct($parameters, ...$args);
+    }
+
+    /**
+     * @throws UnknownProperties
+     */
     public static function fromArray(array $data): static
     {
         return new static(...$data);

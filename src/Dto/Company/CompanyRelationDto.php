@@ -3,8 +3,8 @@
 namespace ITMobile\ITMobileCommon\Dto\Company;
 
 use ITMobile\ITMobileCommon\Dto\BaseDto;
+use ITMobile\ITMobileCommon\Dto\Traits\CamelCaseDataTransferObject;
 use ITMobile\ITMobileCommon\Enums\Company\CompanyRelationType;
-use ITMobile\ITMobileCommon\Helpers\CamelCaseDataTransferObject;
 use Spatie\DataTransferObject\Attributes\CastWith;
 use Spatie\DataTransferObject\Casters\EnumCaster;
 

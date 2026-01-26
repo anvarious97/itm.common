@@ -1,6 +1,6 @@
 <?php
 
-namespace ITMobile\ITMobileCommon\Helpers;
+namespace ITMobile\ITMobileCommon\Dto\Traits;
 
 trait CamelCaseDataTransferObject
 {
@@ -26,5 +26,29 @@ trait CamelCaseDataTransferObject
         }
 
         return $snakeData;
+    }
+
+    public function onlyProvidedSnake(): array
+    {
+        if (!property_exists($this, 'providedFields')) {
+            return $this->toSnake();
+        }
+
+        $data = [];
+        foreach ($this->providedFields as $property) {
+            if (!property_exists($this, $property)) {
+                continue;
+            }
+
+            $value = $this->{$property};
+
+            $snakeKey = strtolower(
+                preg_replace('/([a-z])([A-Z])/', '$1_$2', $property)
+            );
+
+            $data[$snakeKey] = $value;
+        }
+
+        return $data;
     }
 }

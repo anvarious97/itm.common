@@ -3,7 +3,7 @@
 namespace ITMobile\ITMobileCommon\Dto\Company;
 
 use ITMobile\ITMobileCommon\Dto\BaseDto;
-use ITMobile\ITMobileCommon\Helpers\CamelCaseDataTransferObject;
+use ITMobile\ITMobileCommon\Dto\Traits\CamelCaseDataTransferObject;
 
 /**
  * @property string $id UUID

@@ -12,6 +12,7 @@ use Spatie\DataTransferObject\Casters\EnumCaster;
  * @property string $id UUID
  * @property string $cityId UUID
  * @property string $name
+ * @property CompanyType $type
  * @property string|null $createdAt
  * @property string|null $updatedAt
  * @property string|null $deletedAt

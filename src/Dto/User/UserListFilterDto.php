@@ -9,6 +9,17 @@ use ITMobile\ITMobileCommon\Enums\User\UserStatus;
 use Spatie\DataTransferObject\Attributes\CastWith;
 use Spatie\DataTransferObject\Casters\EnumCaster;
 
+/**
+ * @property string|null $id
+ * @property string|null $companyId
+ * @property string|null $name
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string|null $role
+ * @property UserStatus|null $status
+ * @property string|null $sortBy
+ * @property string|null $sortDir;
+ */
 class UserListFilterDto extends BaseDto
 {
     use CamelCaseDataTransferObject, TracksProvidedFields;

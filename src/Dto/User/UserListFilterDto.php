@@ -17,8 +17,7 @@ use Spatie\DataTransferObject\Casters\EnumCaster;
  * @property string|null $phone
  * @property string|null $role
  * @property UserStatus|null $status
- * @property string|null $sortBy
- * @property string|null $sortDir;
+ * @property array|null $sort
  */
 class UserListFilterDto extends BaseDto
 {
@@ -39,7 +38,5 @@ class UserListFilterDto extends BaseDto
     #[CastWith(EnumCaster::class, UserStatus::class)]
     public ?UserStatus $status;
 
-    public ?string $sortBy = 'created_at';
-
-    public ?string $sortDir = 'desc';
+    public ?array $sort = [];
 }

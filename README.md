@@ -55,6 +55,9 @@ class MyModel extends Model
 }
 ```
 
+### Фильтрация и сортировка
+Для упрощенной сортировки и фильтрации в запросах можно использовать [QueryHelper](src/Support/Builder/QueryHelper.php).
+
 ## Testing
 
 ```bash

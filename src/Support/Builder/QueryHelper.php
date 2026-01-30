@@ -13,12 +13,13 @@ class QueryHelper
         array $custom = []
     ): void {
         foreach ($filters as $key => $value) {
-            if (!in_array($key, $allowed, true)) {
+            if (! in_array($key, $allowed, true)) {
                 continue;
             }
 
             if (isset($custom[$key])) {
                 $custom[$key]($query, $value);
+
                 continue;
             }
 
@@ -41,4 +42,3 @@ class QueryHelper
         }
     }
 }
-

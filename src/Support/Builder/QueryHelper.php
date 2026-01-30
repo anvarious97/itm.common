@@ -29,11 +29,17 @@ class QueryHelper
     public static function applySorting(
         Builder $query,
         array $sort,
-        array $allowed
+        array $allowed,
+        array $custom = []
     ): void {
         foreach ($sort as $field) {
             $direction = str_starts_with($field, '-') ? 'desc' : 'asc';
             $column = ltrim($field, '-');
+
+            if (isset($custom[$column])) {
+                $custom[$column]($query, $direction);
+                continue;
+            }
 
             if (in_array($column, $allowed, true)) {
                 $query->orderBy($column, $direction);

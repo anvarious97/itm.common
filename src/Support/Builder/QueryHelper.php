@@ -39,6 +39,7 @@ class QueryHelper
 
             if (isset($custom[$column])) {
                 $custom[$column]($query, $direction);
+
                 continue;
             }
 

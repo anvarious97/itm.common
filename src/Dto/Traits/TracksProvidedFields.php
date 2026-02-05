@@ -16,7 +16,7 @@ trait TracksProvidedFields
         $this->providedFields = array_keys($parameters);
     }
 
-    protected function isProvided(string $property): bool
+    public function isProvided(string $property): bool
     {
         return in_array($property, $this->providedFields, true);
     }

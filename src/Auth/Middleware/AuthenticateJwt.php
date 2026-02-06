@@ -27,6 +27,7 @@ readonly class AuthenticateJwt
 
         try {
             $dto = $this->decoder->decode($token);
+            $user = new AuthenticatedUserWrapper($dto);
         } catch (Throwable $e) {
             return response()->json([
                 'message' => 'Invalid Token',
@@ -35,8 +36,8 @@ readonly class AuthenticateJwt
             ], 401);
         }
 
-        Auth::setUser(new AuthenticatedUserWrapper($dto));
-        $request->setUserResolver(fn () => $dto);
+        $request->setUserResolver(fn () => $user);
+        Auth::setUser($user);
 
         return $next($request);
     }

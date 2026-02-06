@@ -11,7 +11,7 @@ class AuthenticatedUserWrapper implements Authenticatable
 
     public function getAuthIdentifierName(): string
     {
-        return 'user_id';
+        return 'userId';
     }
 
     public function getAuthIdentifier()

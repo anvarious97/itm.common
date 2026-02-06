@@ -5,6 +5,7 @@ namespace ITMobile\ITMobileCommon\Auth\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use ITMobile\ITMobileCommon\Auth\AuthenticatedUserWrapper;
 use ITMobile\ITMobileCommon\Auth\JwtTokenDecoder;
 use Throwable;
 
@@ -34,7 +35,7 @@ readonly class AuthenticateJwt
             ], 401);
         }
 
-        Auth::setUser($dto);
+        Auth::setUser(new AuthenticatedUserWrapper($dto));
         $request->setUserResolver(fn () => $dto);
 
         return $next($request);

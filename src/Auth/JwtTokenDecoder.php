@@ -45,7 +45,7 @@ readonly class JwtTokenDecoder
         // if starts with file:// => read file content
         if (str_starts_with($this->publicKey, 'file://')) {
             $path = substr($this->publicKey, 7);
-            if (!file_exists($path)) {
+            if (! file_exists($path)) {
                 throw new FileNotFoundException(sprintf('Public key file not found: %s', $path));
             }
             $content = file_get_contents($path);

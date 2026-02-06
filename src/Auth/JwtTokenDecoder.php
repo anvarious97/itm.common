@@ -25,15 +25,15 @@ readonly class JwtTokenDecoder
             new Key($this->getPublicKey(), $this->algorithm),
         );
 
-        $roles = $payload->rol ?? $payload->roles;
+        $roles = $payload->rol ?? [];
 
         return new AuthenticatedUserDto(
-            userId: $payload->sub ?? $payload->user_id,
-            companyId: $payload->com ?? $payload->company_id,
+            userId: $payload->sub,
+            companyId: $payload->com ?? null,
             roles: $roles,
-            permissions: $payload->per ?? $payload->permissions,
+            permissions: $payload->per ?? [],
             isSuperAdmin: in_array('super-admin', $roles, true),
-            impersonatorId: null
+            impersonatorId: $payload->imp ?? null
         );
     }
 

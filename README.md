@@ -23,6 +23,42 @@ composer require anvarious97/itm.common
 
 ## Usage
 
+### Авторизация (Использование IAM авторизации)
+
+После установки пакет автоматически регистрирует [AuthServiceProvider](src/Providers/AuthServiceProvider.php), middleware ``'iam.auth'`` и кастомный ``jwt`` guard.
+Что позволяет проверять токен и извлекать из него необходимую информацию.
+
+#### Настройка
+
+Добавьте публичный ключ (или путь к нему) в .env:
+```dotenv
+IAM_PUBLIC_KEY="-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkq...\n-----END PUBLIC KEY-----"
+# или
+IAM_PUBLIC_KEY=file://C:\Projects\itm.iam\storage\secure\jwt\public.pem
+```
+Опубликуйте config (опционально):
+```bash
+php artisan vendor:publish --provider="ITMobile\ITMobileCommon\Providers\AuthServiceProvider" --tag=config
+```
+Также внесите изменения в сonfig ``auth``:
+```php
+...
+'defaults' => [
+    'guard' => 'api',
+    'passwords' => null,
+],
+'guards' => [
+    'api' => [
+        'driver' => 'jwt',
+        'provider' => 'jwt',
+    ]
+],
+...
+```
+
+#### Использование middleware
+Middleware [AuthenticateJwt](src/Auth/Middleware/AuthenticateJwt.php) имеет алиас ``iam.auth`` и проверяет JWT и делает доступным пользователя в ``$request->user()`` и ``Auth::guard('api')->user()`` или ``Auth::user()`` (если ``defaults.guard`` = ``api``).
+
 ### Пагинация (ApiPaginator)
 
 Добавлен [упрощённый LengthAwarePaginator](src/Pagination/ApiPaginator.php) с чистым JSON без лишних мета (data, total, per_page, current_page, last_page).

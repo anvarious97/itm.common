@@ -31,17 +31,17 @@ readonly class AuthenticateJwt
             $dto = $this->decoder->decode($token);
         } catch (Throwable $e) {
             throw new UnauthorizedHttpException(
-                $this->prefix, 'Invalid JWT token: ' . $e->getMessage(), $e
+                $this->prefix, 'Invalid JWT token: '.$e->getMessage(), $e
             );
         }
 
         if (empty($dto->userId)) {
             throw new BadRequestHttpException('JWT token does not contain userId');
         }
-        if (!is_array($dto->roles)) {
+        if (! is_array($dto->roles)) {
             throw new BadRequestHttpException('JWT token roles must be an array');
         }
-        if (!is_array($dto->permissions)) {
+        if (! is_array($dto->permissions)) {
             throw new BadRequestHttpException('JWT token permissions must be an array');
         }
 

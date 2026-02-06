@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         // publish config
         $this->publishes([
-            dirname(__DIR__, 2) . '/config/itm-auth.php' => config_path('itm-auth.php'),
+            dirname(__DIR__, 2).'/config/itm-auth.php' => config_path('itm-auth.php'),
         ], 'config');
 
         // middleware alias register

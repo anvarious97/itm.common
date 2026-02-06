@@ -12,45 +12,45 @@ class JwtGuard implements Guard
 
     public function __construct(protected Request $request) {}
 
-	public function check(): bool
+    public function check(): bool
     {
         return $this->user() !== null;
-	}
+    }
 
-	public function guest(): bool
+    public function guest(): bool
     {
-        return !$this->check();
-	}
+        return ! $this->check();
+    }
 
-	public function user()
-	{
+    public function user()
+    {
         if ($this->user) {
             return $this->user;
         }
 
         return $this->user = $this->request->user();
-	}
+    }
 
-	public function id()
-	{
+    public function id()
+    {
         return $this->user()?->getAuthIdentifier();
-	}
+    }
 
-	public function validate(array $credentials = []): bool
+    public function validate(array $credentials = []): bool
     {
         return true;
-	}
+    }
 
-	public function hasUser(): bool
+    public function hasUser(): bool
     {
-		return (bool) $this->user;
-	}
+        return (bool) $this->user;
+    }
 
-	/**
-	 * @inheritDoc
-	 */
-	public function setUser(Authenticatable $user): void
+    /**
+     * {@inheritDoc}
+     */
+    public function setUser(Authenticatable $user): void
     {
         $this->user = $user;
-	}
+    }
 }

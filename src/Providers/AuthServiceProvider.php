@@ -31,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         // publish config
         $this->publishes([
-            __DIR__.'/../../config/itm-auth.php' => config_path('itm-auth.php'),
+            realpath(__DIR__.'/../../config/itm-auth.php') => config_path('itm-auth.php'),
         ], 'config');
 
         // middleware alias register

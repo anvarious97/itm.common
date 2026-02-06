@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use ITMobile\ITMobileCommon\Auth\AuthenticatedUserWrapper;
 use ITMobile\ITMobileCommon\Auth\JwtTokenDecoder;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Throwable;
 
 readonly class AuthenticateJwt
@@ -22,19 +24,28 @@ readonly class AuthenticateJwt
         $token = $this->extractToken($request);
 
         if (! $token) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            throw new UnauthorizedHttpException($this->prefix, 'JWT Token is missing');
         }
 
         try {
             $dto = $this->decoder->decode($token);
-            $user = new AuthenticatedUserWrapper($dto);
         } catch (Throwable $e) {
-            return response()->json([
-                'message' => 'Invalid Token',
-                'error' => $e->getMessage(),
-                'code' => $e->getCode(),
-            ], 401);
+            throw new UnauthorizedHttpException(
+                $this->prefix, 'Invalid JWT token: ' . $e->getMessage(), $e
+            );
         }
+
+        if (empty($dto->userId)) {
+            throw new BadRequestHttpException('JWT token does not contain userId');
+        }
+        if (!is_array($dto->roles)) {
+            throw new BadRequestHttpException('JWT token roles must be an array');
+        }
+        if (!is_array($dto->permissions)) {
+            throw new BadRequestHttpException('JWT token permissions must be an array');
+        }
+
+        $user = new AuthenticatedUserWrapper($dto);
 
         $request->setUserResolver(fn () => $user);
         Auth::setUser($user);

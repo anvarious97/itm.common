@@ -40,7 +40,7 @@ IAM_PUBLIC_KEY=file://C:\Projects\itm.iam\storage\secure\jwt\public.pem
 ```bash
 php artisan vendor:publish --provider="ITMobile\ITMobileCommon\Providers\AuthServiceProvider" --tag=config
 ```
-Также внесите изменения в сonfig ``auth``:
+Также внесите изменения в config ``auth``:
 ```php
 ...
 'defaults' => [

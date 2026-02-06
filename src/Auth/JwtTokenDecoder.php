@@ -11,8 +11,7 @@ readonly class JwtTokenDecoder
     public function __construct(
         private string $publicKey,
         private string $algorithm = 'RS256',
-    )
-    {}
+    ) {}
 
     public function decode(string $token)
     {

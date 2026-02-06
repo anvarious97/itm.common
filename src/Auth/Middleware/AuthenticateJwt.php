@@ -20,7 +20,7 @@ readonly class AuthenticateJwt
     {
         $token = $this->extractToken($request);
 
-        if (!$token) {
+        if (! $token) {
             return response()->json(['message' => 'Unauthorized'], 401);
         }
 
@@ -44,11 +44,11 @@ readonly class AuthenticateJwt
     {
         $header = $request->header($this->header);
 
-        if (!$header) {
+        if (! $header) {
             return null;
         }
 
-        if ($this->prefix && str_starts_with($header, $this->prefix . ' ')) {
+        if ($this->prefix && str_starts_with($header, $this->prefix.' ')) {
             return substr($header, strlen($this->prefix) + 1);
         }
 

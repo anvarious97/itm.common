@@ -2,8 +2,8 @@
 
 namespace ITMobile\ITMobileCommon\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
+use Illuminate\Support\ServiceProvider;
 use ITMobile\ITMobileCommon\Auth\JwtTokenDecoder;
 use ITMobile\ITMobileCommon\Auth\Middleware\AuthenticateJwt;
 

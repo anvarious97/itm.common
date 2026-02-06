@@ -11,5 +11,5 @@ return [
     ],
     'header' => env('IAM_HEADER', 'Authorization'),
     'prefix' => env('IAM_PREFIX', 'Bearer'),
-    'leeway' => (int) env('IAM_LEEWAY', 60)
+    'leeway' => (int) env('IAM_LEEWAY', 60),
 ];

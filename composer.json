@@ -16,8 +16,12 @@
     ],
     "require": {
         "php": "^8.3",
+        "firebase/php-jwt": "^7.0",
         "illuminate/collections": "^10||^11||^12",
         "illuminate/pagination": "^10||^11||^12",
+        "illuminate/support": "^10||^11||^12",
+        "illuminate/auth": "^10||^11||^12",
+        "spatie/laravel-permission": "^6.0",
         "spatie/data-transfer-object": "^3.9"
     },
     "require-dev": {
@@ -52,7 +56,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ITMobile\\ITMobileCommon\\Pagination\\PaginationServiceProvider"
+                "ITMobile\\ITMobileCommon\\Pagination\\PaginationServiceProvider",
+                "ITMobile\\ITMobileCommon\\Providers\\AuthServiceProvider"
             ]
         }
     }

@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        if (!config('itm-auth.enabled', true)) {
+        if (! config('itm-auth.enabled', true)) {
             return;
         }
 
@@ -36,7 +36,7 @@ class AuthServiceProvider extends ServiceProvider
             dirname(__DIR__, 2).'/config/itm-auth.php' => config_path('itm-auth.php'),
         ], 'config');
 
-        if (!config('itm-auth.enabled', true)) {
+        if (! config('itm-auth.enabled', true)) {
             return;
         }
 

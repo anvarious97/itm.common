@@ -56,6 +56,13 @@ php artisan vendor:publish --provider="ITMobile\ITMobileCommon\Providers\AuthSer
 ...
 ```
 
+Если функционал провайдера не нужен, то в конфиге можно отключить его:
+```php
+...
+'enabled' => false,
+...
+```
+
 #### Использование middleware
 Middleware [AuthenticateJwt](src/Auth/Middleware/AuthenticateJwt.php) имеет алиас ``iam.auth`` и проверяет JWT и делает доступным пользователя в ``$request->user()`` и ``Auth::guard('api')->user()`` или ``Auth::user()`` (если ``defaults.guard`` = ``api``).
 

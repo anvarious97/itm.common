@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'enabled' => true,
     'public_key' => env('IAM_PUBLIC_KEY'),
     'algo' => env('IAM_ALGO', 'RS256'),
     'claim_mapping' => [

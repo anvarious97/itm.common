@@ -9,6 +9,10 @@ class AuthenticatedUserWrapper implements Authenticatable
 {
     public function __construct(public AuthenticatedUserDto $dto) {}
 
+    /* =======================
+     * Authenticatable
+     * ======================= */
+
     public function getAuthIdentifierName(): string
     {
         return 'userId';
@@ -43,6 +47,38 @@ class AuthenticatedUserWrapper implements Authenticatable
     {
         return null;
     }
+
+    /* =======================
+     * Roles and permissions
+     * ======================= */
+
+    public function hasRole(string $role): bool
+    {
+        return in_array($role, $this->dto->roles, true) || $this->dto->isSuperAdmin;
+    }
+
+    public function hasAnyRole(array|string $roles): bool
+    {
+        $roles = is_array($roles) ? $roles : explode('|', $roles);
+
+        return count(array_intersect($this->dto->roles, $roles)) > 0 || $this->dto->isSuperAdmin;
+    }
+
+    public function hasPermissionTo(string $permission): bool
+    {
+        return in_array($permission, $this->dto->permissions, true) || $this->dto->isSuperAdmin;
+    }
+
+    public function hasAnyPermission(array|string $permissions): bool
+    {
+        $permissions = is_array($permissions) ? $permissions : explode('|', $permissions);
+
+        return count(array_intersect($this->dto->permissions, $permissions)) > 0 || $this->dto->isSuperAdmin;
+    }
+
+    /* =======================
+     * Getters/Setters
+     * ======================= */
 
     public function __get($name)
     {

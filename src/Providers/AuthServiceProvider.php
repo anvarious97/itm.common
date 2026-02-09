@@ -8,6 +8,8 @@ use Illuminate\Support\ServiceProvider;
 use ITMobile\ITMobileCommon\Auth\JwtGuard;
 use ITMobile\ITMobileCommon\Auth\JwtTokenDecoder;
 use ITMobile\ITMobileCommon\Auth\Middleware\AuthenticateJwt;
+use ITMobile\ITMobileCommon\Auth\Middleware\PermissionJwtMiddleware;
+use ITMobile\ITMobileCommon\Auth\Middleware\RoleJwtMiddleware;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -45,6 +47,8 @@ class AuthServiceProvider extends ServiceProvider
             /** @var Router $router */
             $router = $this->app->make(Router::class);
             $router->aliasMiddleware('iam.auth', AuthenticateJwt::class);
+            $router->aliasMiddleware('iam.role', RoleJwtMiddleware::class);
+            $router->aliasMiddleware('iam.permission', PermissionJwtMiddleware::class);
 
             Auth::extend('jwt', fn ($app, $name, array $config) => new JwtGuard($app->make('request')));
         });

@@ -66,6 +66,8 @@ php artisan vendor:publish --provider="ITMobile\ITMobileCommon\Providers\AuthSer
 #### Использование middleware
 Middleware [AuthenticateJwt](src/Auth/Middleware/AuthenticateJwt.php) имеет алиас ``iam.auth`` и проверяет JWT и делает доступным пользователя в ``$request->user()`` и ``Auth::guard('api')->user()`` или ``Auth::user()`` (если ``defaults.guard`` = ``api``).
 
+Также доступны middleware для проверки ролей/прав - ``iam.role:role`` и ``iam.permission:perm``
+
 ### Инициализация ролей/прав в других сервисах (внешние системные права/роли)
 
 Для удобства и единого формата создан [IamClient](src/Client/IamClient.php) для удобного инита, использовать можно так: 

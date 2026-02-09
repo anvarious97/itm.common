@@ -66,6 +66,23 @@ php artisan vendor:publish --provider="ITMobile\ITMobileCommon\Providers\AuthSer
 #### Использование middleware
 Middleware [AuthenticateJwt](src/Auth/Middleware/AuthenticateJwt.php) имеет алиас ``iam.auth`` и проверяет JWT и делает доступным пользователя в ``$request->user()`` и ``Auth::guard('api')->user()`` или ``Auth::user()`` (если ``defaults.guard`` = ``api``).
 
+### Инициализация ролей/прав в других сервисах (внешние системные права/роли)
+
+Для удобства и единого формата создан [IamClient](src/Client/IamClient.php) для удобного инита, использовать можно так: 
+```php
+$client = new IamClient(
+    baseUrl: config('services.iam.url'),
+    defaultHeaders: ['Authorization' => 'Bearer ' . config('services.iam.token')] // Как пример, для внутренних роутов авторизация не требуется
+);
+```
+И потом где требуется (в сидере или в комманде):
+```php
+use \ITMobile\ITMobileCommon\Dto\Role\RoleCreateDto;
+
+$client->ensurePermissions(['test.view', 'test.create']);
+$client->ensureRole(new RoleCreateDto('test.service', ['test.view', 'test.create']));
+```
+
 ### Пагинация (ApiPaginator)
 
 Добавлен [упрощённый LengthAwarePaginator](src/Pagination/ApiPaginator.php) с чистым JSON без лишних мета (data, total, per_page, current_page, last_page).

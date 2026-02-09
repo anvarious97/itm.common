@@ -11,7 +11,7 @@ class RoleJwtMiddleware
     public function handle(Request $request, Closure $next, string $roles)
     {
         $user = $request->user();
-        if (!$user || !$user->hasAnyRole($roles)) {
+        if (! $user || ! $user->hasAnyRole($roles)) {
             throw new AccessDeniedHttpException('Forbidden. Missing role.');
         }
 

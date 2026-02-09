@@ -11,7 +11,7 @@ class PermissionJwtMiddleware
     public function handle(Request $request, Closure $next, string $permissions)
     {
         $user = $request->user();
-        if (!$user || !$user->hasAnyPermission($permissions)) {
+        if (! $user || ! $user->hasAnyPermission($permissions)) {
             throw new AccessDeniedHttpException('Forbidden. Missing permission.');
         }
 

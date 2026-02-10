@@ -19,7 +19,7 @@ class IamClient
     public function ensurePermissions(array $names): void
     {
         Http::withHeaders($this->defaultHeaders)
-            ->post($this->baseUrl.'/internal/permissions/ensure', ['permissions' => $names]);
+            ->post($this->baseUrl.'/api/v1/internal/permissions/ensure', ['permissions' => $names]);
     }
 
     /**
@@ -28,7 +28,7 @@ class IamClient
     public function ensureRole(RoleCreateDto $role): void
     {
         Http::withHeaders($this->defaultHeaders)
-            ->post($this->baseUrl.'/internal/roles/ensure', [
+            ->post($this->baseUrl.'/api/v1/internal/roles/ensure', [
                 'name' => $role->name,
                 'permissions' => $role->permissions,
             ]);

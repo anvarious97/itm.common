@@ -2,7 +2,7 @@
 
 return [
     'enabled' => true,
-    'public_key' => env('IAM_PUBLIC_KEY'),
+    'public_key' => env('ITM_IAM_PUBLIC_KEY'),
     'algo' => env('IAM_ALGO', 'RS256'),
     'claim_mapping' => [
         'tv' => 'token_version',

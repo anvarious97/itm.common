@@ -3,6 +3,7 @@
 namespace ITMobile\ITMobileCommon\Client;
 
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use ITMobile\ITMobileCommon\Dto\Role\RoleCreateDto;
 
@@ -14,16 +15,17 @@ class IamClient
     ) {}
 
     /**
-     * @throws ConnectionException
+     * @throws ConnectionException|RequestException
      */
     public function ensurePermissions(array $names): void
     {
         Http::withHeaders($this->defaultHeaders)
-            ->post($this->baseUrl.'/api/v1/internal/permissions/ensure', ['permissions' => $names]);
+            ->post($this->baseUrl.'/api/v1/internal/permissions/ensure', ['permissions' => $names])
+            ->throw();
     }
 
     /**
-     * @throws ConnectionException
+     * @throws ConnectionException|RequestException
      */
     public function ensureRole(RoleCreateDto $role): void
     {
@@ -31,6 +33,7 @@ class IamClient
             ->post($this->baseUrl.'/api/v1/internal/roles/ensure', [
                 'name' => $role->name,
                 'permissions' => $role->permissions,
-            ]);
+            ])
+            ->throw();
     }
 }

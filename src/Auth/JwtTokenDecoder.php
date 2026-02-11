@@ -30,6 +30,7 @@ readonly class JwtTokenDecoder
         return new AuthenticatedUserDto(
             userId: $payload->sub,
             companyId: $payload->com ?? null,
+            relatedCompanyIds: $payload->rel ?? [],
             roles: $roles,
             permissions: $payload->per ?? [],
             isSuperAdmin: in_array('super-admin', $roles, true),

@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(dirname(__DIR__, 2)."/config/itm-auth.php", "itm-auth");
+        $this->mergeConfigFrom(dirname(__DIR__, 2).'/config/itm-auth.php', 'itm-auth');
 
         // ITM Auth
         if (! config('itm-auth.enabled', true)) {
@@ -35,8 +35,8 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            dirname(__DIR__, 2)."/config/itm-auth.php" => config_path("itm-auth.php")
-        ], ['config', "config-itm-auth"]);
+            dirname(__DIR__, 2).'/config/itm-auth.php' => config_path('itm-auth.php'),
+        ], ['config', 'config-itm-auth']);
 
         // ITM Auth
         if (! config('itm-auth.enabled', true)) {

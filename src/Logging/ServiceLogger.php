@@ -68,17 +68,17 @@ class ServiceLogger implements LoggerInterface
 
     public function notice(Stringable|string $message, array $context = []): void
     {
-        $this->logger->warning($message, $context);
+        $this->logger->notice($message, $context);
     }
 
     public function info(Stringable|string $message, array $context = []): void
     {
-        $this->logger->notice($message, $context);
+        $this->logger->info($message, $context);
     }
 
     public function debug(Stringable|string $message, array $context = []): void
     {
-        $this->logger->info($message, $context);
+        $this->logger->debug($message, $context);
     }
 
     public function log($level, Stringable|string $message, array $context = []): void

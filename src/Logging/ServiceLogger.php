@@ -22,7 +22,7 @@ class ServiceLogger implements LoggerInterface
     {
         $snake = Str::snake($serviceName);
 
-        if (!isset(static::$channels[$snake])) {
+        if (! isset(static::$channels[$snake])) {
             $dailyConfig = config('logging.channels.daily');
 
             static::$channels[$snake] = Log::build([

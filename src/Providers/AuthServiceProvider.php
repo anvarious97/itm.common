@@ -15,15 +15,16 @@ class AuthServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->mergeConfigFrom(dirname(__DIR__, 2)."/config/itm-auth.php", "itm-auth");
+
+        // ITM Auth
         if (! config('itm-auth.enabled', true)) {
             return;
         }
-
         $this->app->singleton(JwtTokenDecoder::class, fn () => new JwtTokenDecoder(
             publicKey: config('itm-auth.public_key'),
             algorithm: config('itm-auth.algo')
         ));
-
         $this->app->bind(AuthenticateJwt::class, fn ($app) => new AuthenticateJwt(
             decoder: $app->make(JwtTokenDecoder::class),
             header: config('itm-auth.header', 'Authorization'),
@@ -33,15 +34,14 @@ class AuthServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        // publish config
         $this->publishes([
-            dirname(__DIR__, 2).'/config/itm-auth.php' => config_path('itm-auth.php'),
-        ], 'config');
+            dirname(__DIR__, 2)."/config/itm-auth.php" => config_path("itm-auth.php")
+        ], ['config', "config-itm-auth"]);
 
+        // ITM Auth
         if (! config('itm-auth.enabled', true)) {
             return;
         }
-
         // middleware alias register
         $this->app->booted(function () {
             /** @var Router $router */

@@ -120,6 +120,33 @@ class MyModel extends Model
 ### Фильтрация и сортировка
 Для упрощенной сортировки и фильтрации в запросах можно использовать [QueryHelper](src/Support/Builder/QueryHelper.php).
 
+### Логирование (ServiceLogger & LazyLogs)
+[ServiceLogger](src/Logging/ServiceLogger.php) - обёртка над логированием Laravel, создающая отдельные логи для каждого сервиса с daily rotation и максимальным количеством файлов, используя настройки из ``config('logging.channels.daily')``
+
+**Лог файлы** хранятся в ``storage/logs/services/{service_name_snake}.log``
+
+[LazyLogs](src/Logging/LazyLogs.php) - трейт для сервисов/классов, автоматически создаёт логгер по имени класса при первом обращении.
+
+#### Использование
+Статическое использование:
+```php
+ServiceLogger::for('MyService')->info('Some message')
+// например использование в Job
+ServiceLogger::for('Jobs')->info('Some job message')
+```
+Использование в классе:
+```php
+class MyService
+{
+    use LazyLogs;
+
+    public function doSomething()
+    {
+        $this->logger()->info('Doing something');
+    }
+}
+```
+
 ## Testing
 
 ```bash

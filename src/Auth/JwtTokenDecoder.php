@@ -34,7 +34,8 @@ readonly class JwtTokenDecoder
             roles: $roles,
             permissions: $payload->per ?? [],
             isSuperAdmin: in_array('super-admin', $roles, true),
-            impersonatorId: $payload->imp ?? null
+            impersonatorId: $payload->imp ?? null,
+            tokenVersion: isset($payload->tv) ? (int) $payload->tv : null
         );
     }
 

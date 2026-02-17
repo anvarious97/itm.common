@@ -12,6 +12,7 @@ use ITMobile\ITMobileCommon\Dto\Traits\CamelCaseDataTransferObject;
  * @property array $roles
  * @property array $permissions
  * @property string|null $impersonatorId UUID
+ * @property int|null $tokenVersion
  */
 class AuthenticatedUserDto extends BaseDto
 {
@@ -30,4 +31,6 @@ class AuthenticatedUserDto extends BaseDto
     public bool $isSuperAdmin = false;
 
     public ?string $impersonatorId = null;
+
+    public ?int $tokenVersion = null;
 }

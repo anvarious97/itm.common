@@ -147,6 +147,21 @@ class MyService
 }
 ```
 
+### Local Dependency Update Script
+В корне расположен скрипт update-all.bat, предназначенный для массового обновления соседних микросервисов.
+Скрипт:
+- Переходит в родительскую директорию
+- Находит все каталоги, начинающиеся с itm.*
+- Исключает itm.common
+- Выполняет в каждом:
+- - ``git pull``
+- - ``composer update anvarious97/itm.common`` (если присутствует composer.json)
+
+Запуск:
+```bash
+cmd /c .\update-all.bat # powershell
+update-all.bat # cmd
+```
 ## Testing
 
 ```bash

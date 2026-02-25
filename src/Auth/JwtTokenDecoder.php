@@ -16,8 +16,6 @@ readonly class JwtTokenDecoder
     ) {}
 
     /**
-     * @return JwtPayloadDto
-     *
      * @throws UnknownProperties|FileNotFoundException
      */
     public function decode(string $token): JwtPayloadDto

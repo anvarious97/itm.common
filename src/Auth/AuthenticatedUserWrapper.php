@@ -3,11 +3,11 @@
 namespace ITMobile\ITMobileCommon\Auth;
 
 use Illuminate\Contracts\Auth\Authenticatable;
-use ITMobile\ITMobileCommon\Dto\User\AuthenticatedUserDto;
+use ITMobile\ITMobileCommon\Dto\User\JwtPayloadDto;
 
 class AuthenticatedUserWrapper implements Authenticatable
 {
-    public function __construct(public AuthenticatedUserDto $dto) {}
+    public function __construct(public JwtPayloadDto $dto) {}
 
     /* =======================
      * Authenticatable

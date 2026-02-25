@@ -5,7 +5,7 @@ namespace ITMobile\ITMobileCommon\Auth;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use ITMobile\ITMobileCommon\Dto\User\AuthenticatedUserDto;
+use ITMobile\ITMobileCommon\Dto\User\JwtPayloadDto;
 use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 readonly class JwtTokenDecoder
@@ -16,9 +16,11 @@ readonly class JwtTokenDecoder
     ) {}
 
     /**
+     * @return JwtPayloadDto
+     *
      * @throws UnknownProperties|FileNotFoundException
      */
-    public function decode(string $token): AuthenticatedUserDto
+    public function decode(string $token): JwtPayloadDto
     {
         $payload = JWT::decode(
             $token,
@@ -27,7 +29,7 @@ readonly class JwtTokenDecoder
 
         $roles = $payload->rol ?? [];
 
-        return new AuthenticatedUserDto(
+        return new JwtPayloadDto(
             userId: $payload->sub,
             companyId: $payload->com ?? null,
             relatedCompanyIds: $payload->rel ?? [],

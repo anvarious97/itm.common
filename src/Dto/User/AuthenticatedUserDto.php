@@ -7,6 +7,9 @@ use ITMobile\ITMobileCommon\Dto\Traits\CamelCaseDataTransferObject;
 
 /**
  * @property string $userId UUID
+ * @property string $name
+ * @property string|null $email
+ * @property string|null $phone
  * @property string|null $companyId UUID
  * @property array $relatedCompanyIds UUIDs
  * @property array $roles
@@ -19,6 +22,12 @@ class AuthenticatedUserDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public string $userId;
+
+    public string $name;
+
+    public ?string $email;
+
+    public ?string $phone;
 
     public ?string $companyId;
 

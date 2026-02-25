@@ -18,6 +18,7 @@ yarn-error.log
 /.idea
 /.fleet
 /.vscode
+/.history
 
 # Code sniffer
 .php_cs

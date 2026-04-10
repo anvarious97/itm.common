@@ -7,6 +7,7 @@ use ITMobile\ITMobileCommon\Dto\Traits\CamelCaseDataTransferObject;
 
 /**
  * @property string $accessToken
+ * @property string|null $refreshToken
  * @property string $tokenType
  * @property int $expiresIn
  */
@@ -15,6 +16,8 @@ class AuthTokenDto extends BaseDto
     use CamelCaseDataTransferObject;
 
     public string $accessToken;
+
+    public ?string $refreshToken = null;
 
     public string $tokenType = 'Bearer';
 

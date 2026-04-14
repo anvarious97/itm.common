@@ -87,7 +87,7 @@ $client->ensureRole(new RoleCreateDto('test.service', ['test.view', 'test.create
 
 ### Пагинация (ApiPaginator)
 
-Добавлен [упрощённый LengthAwarePaginator](src/Pagination/ApiPaginator.php) с чистым JSON без лишних мета (data, total, per_page, current_page, last_page).
+Добавлен [упрощённый LengthAwarePaginator](src/Pagination/ApiPaginator.php) с чистым JSON без лишних мета (data, total, perPage, currentPage, lastPage).
 В Laravel доступен макрос ->apiPaginate() (регистрируется автоматом в Laravel выше 5.5, в остальных надо руками зарегистрировать [PaginationServiceProvider](src/Pagination/PaginationServiceProvider.php)), вне Laravel — через new ApiPaginator(...).
 
 ```php

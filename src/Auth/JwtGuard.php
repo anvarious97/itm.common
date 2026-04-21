@@ -2,6 +2,7 @@
 
 namespace ITMobile\ITMobileCommon\Auth;
 
+use Closure;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
@@ -9,8 +10,12 @@ use Illuminate\Http\Request;
 class JwtGuard implements Guard
 {
     protected ?Authenticatable $user = null;
+    protected ?Request $resolvedRequest = null;
 
-    public function __construct(protected Request $request) {}
+    /**
+     * @param  Closure(): Request  $requestResolver
+     */
+    public function __construct(protected Closure $requestResolver) {}
 
     public function check(): bool
     {
@@ -24,11 +29,14 @@ class JwtGuard implements Guard
 
     public function user()
     {
-        if ($this->user) {
-            return $this->user;
+        $request = $this->resolveRequest();
+
+        if ($this->resolvedRequest !== $request) {
+            $this->resolvedRequest = $request;
+            $this->user = null;
         }
 
-        return $this->user = $this->request->user();
+        return $this->user;
     }
 
     public function id()
@@ -51,6 +59,12 @@ class JwtGuard implements Guard
      */
     public function setUser(Authenticatable $user): void
     {
+        $this->resolvedRequest = $this->resolveRequest();
         $this->user = $user;
+    }
+
+    protected function resolveRequest(): Request
+    {
+        return ($this->requestResolver)();
     }
 }

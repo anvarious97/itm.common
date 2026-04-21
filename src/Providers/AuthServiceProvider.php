@@ -21,7 +21,7 @@ class AuthServiceProvider extends ServiceProvider
         if (! config('itm-auth.enabled', true)) {
             return;
         }
-        $this->app->singleton(JwtTokenDecoder::class, fn () => new JwtTokenDecoder(
+        $this->app->bind(JwtTokenDecoder::class, fn () => new JwtTokenDecoder(
             publicKey: config('itm-auth.public_key'),
             algorithm: config('itm-auth.algo')
         ));
@@ -50,7 +50,9 @@ class AuthServiceProvider extends ServiceProvider
             $router->aliasMiddleware('iam.role', RoleJwtMiddleware::class);
             $router->aliasMiddleware('iam.permission', PermissionJwtMiddleware::class);
 
-            Auth::extend('jwt', fn ($app, $name, array $config) => new JwtGuard($app->make('request')));
+            Auth::extend('jwt', fn ($app, $name, array $config) => new JwtGuard(
+                static fn () => $app->make('request')
+            ));
         });
     }
 }

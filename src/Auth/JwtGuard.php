@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class JwtGuard implements Guard
 {
     protected ?Authenticatable $user = null;
+
     protected ?Request $resolvedRequest = null;
 
     /**

@@ -33,6 +33,8 @@ enum IamPermission: string
 
     case CompaniesView = 'companies.view';
     case CompaniesUpdate = 'companies.update';
+    /** Доступ к дочерним / связанным компаниям в company scope (UC_018). */
+    case CompaniesRelatedAccess = 'companies.related.access';
 
     /**
      * @return list<string>

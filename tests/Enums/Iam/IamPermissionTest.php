@@ -11,11 +11,19 @@ it('IamPermission values cover core access matrix', function (): void {
         'users.view',
         'roles.assign',
         'permissions.view',
+        'companies.view',
+        'companies.create',
+        'companies.update',
+        'companies.delete',
         'companies.related.access',
     );
+
+    expect(IamPermission::values())->not->toContain('admin.settings');
 });
 
 it('IamPermission enum has stable string values', function (): void {
     expect(IamPermission::RolesView->value)->toBe('roles.view');
+    expect(IamPermission::CompaniesCreate->value)->toBe('companies.create');
+    expect(IamPermission::CompaniesDelete->value)->toBe('companies.delete');
     expect(IamPermission::CompaniesRelatedAccess->value)->toBe('companies.related.access');
 });

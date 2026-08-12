@@ -32,7 +32,9 @@ enum IamPermission: string
     case PermissionsAssign = 'permissions.assign';
 
     case CompaniesView = 'companies.view';
+    case CompaniesCreate = 'companies.create';
     case CompaniesUpdate = 'companies.update';
+    case CompaniesDelete = 'companies.delete';
     /** Доступ к дочерним / связанным компаниям в company scope (UC_018). */
     case CompaniesRelatedAccess = 'companies.related.access';
 

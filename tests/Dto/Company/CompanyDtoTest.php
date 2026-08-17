@@ -21,7 +21,10 @@ it('CompanyDto represents company data', function () {
         ->and($dto->name)->toBeString()
         ->and($dto->type)->toBeInstanceOf(CompanyType::class)
         ->and($dto->details)->toBeArray()
-        ->and($dto->settings)->toBeArray();
+        ->and($dto->settings)->toBeArray()
+        ->and($dto->relatedCount)->toBe(0)
+        ->and($dto->usersCount)->toBe(0)
+        ->and($dto->directors)->toBe([]);
 });
 
 it('CompanyDto from array', function () {

@@ -25,10 +25,6 @@ enum IamPermission: string
     case RolesCompanyUpdate = 'roles.company.update';
     case RolesCompanyDelete = 'roles.company.delete';
 
-    case PermissionsView = 'permissions.view';
-    case PermissionsCreate = 'permissions.create';
-    case PermissionsUpdate = 'permissions.update';
-    case PermissionsDelete = 'permissions.delete';
     case PermissionsAssign = 'permissions.assign';
 
     case CompaniesView = 'companies.view';

@@ -10,7 +10,7 @@ it('IamPermission values cover core access matrix', function (): void {
     expect(IamPermission::values())->toContain(
         'users.view',
         'roles.assign',
-        'permissions.view',
+        'permissions.assign',
         'companies.view',
         'companies.create',
         'companies.update',
